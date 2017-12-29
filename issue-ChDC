@@ -1,0 +1,19 @@
+rem set gacutil="C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\gacutil.exe"
+set gacutil="gacutil.exe"
+set RegAsm="C:\Windows\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe"
+//以上没起作用，cmd找不到exe，下边使用绝对路径调用
+echo Install BandObjectLib.dll...
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\gacutil.exe" /if BandObjectLib.dll 1>nul
+echo Install ChDCStatMenusLibrary.dll...
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\gacutil.exe" /if ChDCStatMenusLibrary.dll 1>nul
+echo Install ChDCStatMenus.dll...
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\x64\gacutil.exe" /if ChDCStatMenus.dll 1>nul
+echo Regedit ChDCStatMenus.dll...
+"C:\Windows\Microsoft.NET\Framework64\v4.0.30319\RegAsm.exe" "D:\Green Portable Software\ChDCStatMenus\ChDCStatMenus.dll" 1>nul
+
+echo Restart Desktop...
+taskkill.exe /im explorer.exe /f 1>nul
+c:\Windows\explorer.exe
+
+echo Finished!
+pause
